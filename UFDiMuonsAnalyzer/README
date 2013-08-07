@@ -1,28 +1,32 @@
-To Run, these packages are required:
+This is the Branch for CMSSW_6_1_2_SLHC6
 
-#cvs co -d UserArea UserCode/UfCode/UserArea
-cvs co -r V00-08-07 -d SHarper/HEEPAnalyzer UserCode/SHarper/HEEPAnalyzer
-cvs co -r V00-02-05 -d CMGTools/External UserCode/CMG/CMGTools/External
+This will set things up:
 
-and the packages required for the latest PAT recipe:
+# Setup base environment
 
-https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePATRecipes
+export SCRAM_ARCH=slc5_amd64_gcc472
+cmsrel CMSSW_6_1_2_SLHC6
+cd CMSSW_6_1_2_SLHC6/src/
+cmsenv
 
-    2012-08-27--using V08-09-22 of PAT, b/c the V08-09-23 won't build on CMSSW_5_3_3
+addpkg RecoEgamma/EgammaTools
+addpkg RecoEcal/EgammaCoreTools
 
-2012-12-05:
+# latest tag available 29 April 2013 from https://twiki.cern.ch/twiki/bin/viewauth/CMS/PileupJetID#Software
+cvs co -r V00-03-04 -d CMGTools/External UserCode/CMG/CMGTools/External #tag V00-02-10 is certainly working
+# cvs co -r HEAD RecoJets/JetProducers/data # needed previously when the package was problematic...
+# compiles in blocks
+scram b -j 8
 
-cmsrel CMSSW_5_3_5
-cd CMSSW_5_3_5/src
+# PAT tag V08-10-34-06/08 from  https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePATReleaseNotes60X
+addpkg PhysicsTools/PatAlgos     V08-10-34-08
+scram b -j 8
 
-cvs co -r V00-08-07 -d SHarper/HEEPAnalyzer UserCode/SHarper/HEEPAnalyzer
-cvs co -r V00-02-10 -d CMGTools/External UserCode/CMG/CMGTools/External
-
-cvs co -r V06-05-06-03 DataFormats/PatCandidates
-cvs co -r V08-09-42 PhysicsTools/PatAlgos 
-cvs co -r V15-02-06 RecoParticleFlow/PFProducer # for EGM Iso
-
-cvs co -r V00-01-07 -d UserArea UserCode/UfHMuMuCode/UserArea
-
-nice scram b -j8
+# the ntuplizer
+git clone https://github.com/jhugon/UfHMuMuCode.git UserArea
+cd UserArea
+git checkout SLHC
+cd ..
+# compiles in blocks
+scram b -j 8
 

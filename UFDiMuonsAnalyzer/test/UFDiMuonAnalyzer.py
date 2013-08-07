@@ -291,7 +291,8 @@ process.p = cms.Path(#
 
 #===============================================================================
 
-process.dimuons.getFilename    = cms.untracked.string("SingleMuRun2012A-22Jan2013-v1.root")
+#process.dimuons.getFilename    = cms.untracked.string("SingleMuRun2012A-22Jan2013-v1.root")
+process.dimuons.getFilename    = cms.untracked.string("DYToMuMu_M-20_TuneZ2star_14TeV-pythia6-UpgradePhase1Age0STARTPU140Bx25.root")
 
 process.source.fileNames.extend(
 [
@@ -299,8 +300,10 @@ process.source.fileNames.extend(
 #"file:/data/uftrig01b/jhugon/hmumu/devNtupler/testFiles/VBFHToMM_M125_8TeV-powheg-pythia6-tauola-RECO_1.root"
 #"file:/data/uftrig01b/digiovan/root/higgs/CMSSW_5_3_3_patch3/testPriVtxConstr/TTJetsSkims/TTJets_10_1_crI.root"
 #"file:/home/jhugon/scratchRaid7/hmumu/recoData/VBFHToMM_M125_8TeV-powheg-pythia6-tauola-RECO_1.root"
+"/store/mc/Summer13/DYToMuMu_M-20_TuneZ2star_14TeV-pythia6/GEN-SIM-RECO/UpgradePhase1Age0START_DR61SLHCx_PU140Bx25_STAR17_61_V1A-v1/10000/F6DBFF5F-4ACC-E211-A0D0-002618943967.root"
 ]
 )
+process.GlobalTag.globaltag = "START61_V1A::All"
 #process.out.outputCommands = cms.untracked.vstring("keep *")
 #process.outpath = cms.EndPath(process.out)
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(20) )
