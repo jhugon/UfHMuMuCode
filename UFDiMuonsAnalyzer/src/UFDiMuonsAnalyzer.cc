@@ -1132,8 +1132,8 @@ void UFDiMuonsAnalyzer::analyze(const edm::Event& iEvent,
   
     // Multivariate approach
     // save the output of multivariate analysis
-    eleMvaNonTrigV0.push_back( elec->electronID("mvaNonTrigV0") );
-    eleMvaTrigV0   .push_back( elec->electronID("mvaTrigV0") );
+    //eleMvaNonTrigV0.push_back( elec->electronID("mvaNonTrigV0") );
+    //eleMvaTrigV0   .push_back( elec->electronID("mvaTrigV0") );
 
 
     bool validKF= false; 

@@ -250,19 +250,6 @@ process.kt6PFJets25asHtoZZto4l = process.kt6PFJets.clone(rParam = cms.double(0.6
 #===============================================================================
 # Electron Selection
 
-#Electron ID
-#process.load('EGamma.EGammaAnalysisTools.electronIdMVAProducer_cfi')
-process.load('EgammaAnalysis.ElectronTools.electronIdMVAProducer_cfi')
-process.mvaID = cms.Sequence(  process.mvaTrigV0 + process.mvaNonTrigV0 )
-
-# try
-process.patElectronsPFlow.electronIDSources = cms.PSet(
-#process.patElectrons.electronIDSources = cms.PSet(
-    #MVA
-    mvaTrigV0 = cms.InputTag("mvaTrigV0"),
-    mvaNonTrigV0 = cms.InputTag("mvaNonTrigV0"),
-)   
-
 process.patElectronsPFlow.isolationValues = cms.PSet(
         pfNeutralHadrons = cms.InputTag("elPFIsoValueNeutral03PFIdPFIso"),
         pfChargedAll = cms.InputTag("elPFIsoValueChargedAll03PFIdPFIso"),
@@ -281,7 +268,6 @@ process.patElectronsPFlow.isolationValuesNoPFId = cms.PSet(
 #===============================================================================
 
 process.p = cms.Path(#
-                     process.mvaID*                  
                      process.patDefaultSequence*
                      getattr(process,"patPF2PATSequence"+postfix)*
                      #process.patPF2PATSequencePFlow *
