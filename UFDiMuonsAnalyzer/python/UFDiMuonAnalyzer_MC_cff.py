@@ -7,7 +7,7 @@ DiMuons = cms.EDAnalyzer('UFDiMuonsAnalyzer',
                          muonColl = cms.InputTag("slimmedMuons"),
                          
                          isVerbose = cms.untracked.bool(False),
-                         isMonteCarlo = cms.bool(False),
+                         isMonteCarlo = cms.bool(True),
                          nMuons = cms.int32(2),
                          
                          # muon kinematic cuts
@@ -43,10 +43,11 @@ DiMuons = cms.EDAnalyzer('UFDiMuonsAnalyzer',
                          
                          #triggerName = cms.string("@"),#wild card: all triggers
                          # HLT trigger info
-                         checkTrigger = cms.bool(True),
+                         checkTrigger = cms.bool(False),
 
                          processName = cms.string("HLT"),
                          triggerNames = cms.vstring("HLT_IsoMu24_eta2p1","HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ","HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ"), # up to 3 trigger names
+
                          triggerResults = cms.InputTag("TriggerResults","","HLT"),
                          triggerObjs = cms.InputTag("selectedPatTrigger"),
                          
